@@ -87,17 +87,17 @@ public class ArtifactoryMojo extends AbstractMojo {
      * Set up proxy from settings.xml, if not provided.
      */
     private void setupProxy() {
-        if (this.proxy.getHost() != null) {
+        if (this.proxy.delegate.getHost() != null) {
             return;
         }
         Proxy proxy = session.getSettings().getActiveProxy();
         if (proxy == null) {
             return;
         }
-        this.proxy.setHost(proxy.getHost());
-        this.proxy.setPort(proxy.getPort());
-        this.proxy.setUsername(proxy.getUsername());
-        this.proxy.setPassword(proxy.getPassword());
+        this.proxy.delegate.setHost(proxy.getHost());
+        this.proxy.delegate.setPort(proxy.getPort());
+        this.proxy.delegate.setUsername(proxy.getUsername());
+        this.proxy.delegate.setPassword(proxy.getPassword());
     }
 
     /**

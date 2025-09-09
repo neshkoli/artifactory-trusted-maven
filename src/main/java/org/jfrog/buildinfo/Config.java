@@ -21,6 +21,36 @@ public class Config {
     public static class Artifactory {
         @Delegate
         ArtifactoryClientConfiguration delegate = CLIENT_CONFIGURATION;
+
+        // Explicit bridge methods for XML mapping
+        public void setIncludeEnvVars(Boolean includeEnvVars) {
+            if (includeEnvVars != null) {
+                delegate.setIncludeEnvVars(includeEnvVars);
+            }
+        }
+        public Boolean getIncludeEnvVars() {
+            return delegate.isIncludeEnvVars();
+        }
+        public void setEnvVarsExcludePatterns(String patterns) {
+            delegate.setEnvVarsExcludePatterns(patterns);
+        }
+        public String getEnvVarsExcludePatterns() {
+            return delegate.getEnvVarsExcludePatterns();
+        }
+        public void setEnvVarsIncludePatterns(String patterns) {
+            delegate.setEnvVarsIncludePatterns(patterns);
+        }
+        public String getEnvVarsIncludePatterns() {
+            return delegate.getEnvVarsIncludePatterns();
+        }
+        public void setTimeoutSec(Integer timeoutSec) {
+            if (timeoutSec != null) {
+                delegate.setTimeoutSec(timeoutSec);
+            }
+        }
+        public Integer getTimeoutSec() {
+            return delegate.getTimeoutSec();
+        }
     }
 
     /**
