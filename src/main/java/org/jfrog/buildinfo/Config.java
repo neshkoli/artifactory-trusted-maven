@@ -48,9 +48,6 @@ public class Config {
                 delegate.setTimeoutSec(timeoutSec);
             }
         }
-        public Integer getTimeoutSec() {
-            return delegate.getTimeoutSec();
-        }
     }
 
     /**
@@ -83,6 +80,31 @@ public class Config {
     public static class BuildInfo {
         @Delegate(types = {ArtifactoryClientConfiguration.BuildInfoHandler.class, PrefixPropertyHandler.class})
         ArtifactoryClientConfiguration.BuildInfoHandler delegate = CLIENT_CONFIGURATION.info;
+
+        // Explicit bridge methods for XML mapping
+        public void setBuildName(String buildName) { delegate.setBuildName(buildName); }
+        public String getBuildName() { return delegate.getBuildName(); }
+
+        public void setBuildNumber(String buildNumber) { delegate.setBuildNumber(buildNumber); }
+        public String getBuildNumber() { return delegate.getBuildNumber(); }
+
+        public void setBuildUrl(String buildUrl) { delegate.setBuildUrl(buildUrl); }
+        public String getBuildUrl() { return delegate.getBuildUrl(); }
+
+        public void setProject(String project) { delegate.setProject(project); }
+        public String getProject() { return delegate.getProject(); }
+
+        public void setBuildNumbersNotToDelete(String value) { delegate.setBuildNumbersNotToDelete(value); }
+        public String getBuildNumbersNotToDelete() { return delegate.getBuildNumbersNotToDelete(); }
+
+        public void setBuildRetentionMaxDays(Integer days) { if (days != null) delegate.setBuildRetentionMaxDays(days); }
+        public Integer getBuildRetentionMaxDays() { return delegate.getBuildRetentionMaxDays(); }
+
+        public void setBuildRetentionCount(Integer count) { if (count != null) delegate.setBuildRetentionCount(count); }
+        public Integer getBuildRetentionCount() { return delegate.getBuildRetentionCount(); }
+
+        public void setPrincipal(String principal) { delegate.setPrincipal(principal); }
+        public String getPrincipal() { return delegate.getPrincipal(); }
     }
 
     /**
